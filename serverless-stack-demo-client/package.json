@@ -1,0 +1,24 @@
+{
+  "name": "notes-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "amazon-cognito-identity-js": "^1.19.0",
+    "aws-sdk": "^2.100.0",
+    "crypto-js": "^3.1.9-1",
+    "react": "^15.6.1",
+    "react-bootstrap": "^0.31.2",
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.1.2",
+    "react-scripts": "1.0.11"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "aws s3 sync build/ s3://notes-app-client",
+    "postdeploy": "aws cloudfront create-invalidation --distribution-id E1KTCKT9SOAHBW --paths '/*' && aws cloudfront create-invalidation --distribution-id E3MQXGQ47VCJB0 --paths '/*'",
+    "eject": "react-scripts eject"
+  }
+}
