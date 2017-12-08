@@ -1,6 +1,10 @@
 export default {
   MAX_ATTACHMENT_SIZE: 5000000,
 
+  s3: {
+    BUCKET: "biolabs-posts"
+  },
+
 
   apiGateway: {
     URL: "https://lagc1tiv54.execute-api.us-west-2.amazonaws.com/prod",

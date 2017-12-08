@@ -70,7 +70,28 @@ export async function invokeApig({
 }
 
 
+export async function s3Upload(file) {
+  if (!await authUser()) {
+    throw new Error("User is not logged in");
+  }
 
+  const s3 = new AWS.S3({
+    params: {
+      Bucket: config.s3.BUCKET
+    }
+  });
+  const filename = `${AWS.config.credentials
+    .identityId}-${Date.now()}-${file.name}`;
+
+  return s3
+    .upload({
+      Key: filename,
+      Body: file,
+      ContentType: file.type,
+      ACL: "public-read"
+    })
+    .promise();
+}
 
 
 
@@ -117,6 +138,11 @@ export function signOutUser() {
 
   if (currentUser !== null) {
     currentUser.signOut();
+  }
+
+  if (AWS.config.credentials) {
+    AWS.config.credentials.clearCachedId();
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({});
   }
 }
 
