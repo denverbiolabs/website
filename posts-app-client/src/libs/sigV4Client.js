@@ -290,4 +290,5 @@ sigV4Client.newClient = function(config) {
   return awsSigV4Client;
 };
 
+
 export default sigV4Client;
