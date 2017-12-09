@@ -31,7 +31,9 @@ export default class Home extends Component {
 
 notes() {
   return invokeApig({ path: "/posts" });
+  
 }
+
 
 
   renderNotesList(notes) {
