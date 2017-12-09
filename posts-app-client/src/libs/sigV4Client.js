@@ -180,7 +180,7 @@ sigV4Client.newClient = function(config) {
   awsSigV4Client.secretKey = config.secretKey;
   awsSigV4Client.sessionToken = config.sessionToken;
   awsSigV4Client.serviceName = config.serviceName || "execute-api";
-  awsSigV4Client.region = config.region || "us-east-1";
+  awsSigV4Client.region = config.region || "us-west-2";
   awsSigV4Client.defaultAcceptType =
     config.defaultAcceptType || "application/json";
   awsSigV4Client.defaultContentType =
